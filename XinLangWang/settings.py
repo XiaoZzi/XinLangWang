@@ -27,7 +27,7 @@ SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
-REDIS_URL = 'redis://root:123456@127.0.0.1:6379'
+REDIS_URL = 'redis://root:xxx@127.0.0.1:6379'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
