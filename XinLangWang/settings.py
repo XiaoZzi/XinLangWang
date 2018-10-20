@@ -23,6 +23,13 @@ KEYWORDS = ['建筑', '医疗', '教育']
 REDIRECT_ENABLED = False                       # 关掉重定向, 不会重定向到新的地址
 HTTPERROR_ALLOWED_CODES = [301, 302]     # 返回301, 302时, 按正常返回对待, 可以正常写入cookie
 
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+
+REDIS_URL = 'redis://root:123456@127.0.0.1:6379'
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'XinLangWang (+http://www.yourdomain.com)'
 
@@ -78,7 +85,8 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'XinLangWang.pipelines.MysqlTwistedPipeline': 300,
+   # 'XinLangWang.pipelines.MysqlTwistedPipeline': 300,
+   'scrapy_redis.pipelines.RedisPipeline': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
